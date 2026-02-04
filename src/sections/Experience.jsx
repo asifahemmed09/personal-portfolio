@@ -1,38 +1,40 @@
+import React from 'react';
+
 const experiences = [
   {
-    period: "2022 — Present",
-    role: "Senior Frontend Engineer",
-    company: "Tech Innovators Inc.",
+    period: "2024 — Present",
+    role: "Aspiring Full Stack Developer",
+    company: "Self-Directed Learning",
     description:
-      "Leading frontend architecture for a suite of fintech products. Implemented micro-frontend architecture, reduced bundle size by 40%, and mentored a team of 5 developers.",
-    technologies: ["React", "TypeScript", "Next.js", "GraphQL"],
+      "Deep diving into modern web technologies. Currently building a portfolio of applications focusing on performance, accessibility, and clean code architecture.",
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js","Express.js","MongoDB"],
     current: true,
   },
   {
-    period: "2020 — 2022",
-    role: "Frontend Engineer",
-    company: "Digital Solutions Co.",
+    period: "2023 — 2024",
+    role: "Lead Developer",
+    company: "EduConnect a Learning Platform",
     description:
-      "Built and maintained multiple React applications for enterprise clients. Introduced automated testing practices that improved code coverage to 85%.",
-    technologies: ["React", "Redux", "Jest", "Cypress"],
+      "Architected and deployed a full-stack web application. Solved complex state management issues and implemented a responsive design that works across all devices.",
+    technologies: ["React", "Node.js", "MongoDB", "Express"],
     current: false,
   },
   {
-    period: "2019 — 2020",
-    role: "Junior Developer",
-    company: "StartUp Labs",
+    period: "2023",
+    role: "Open Source Contributor",
+    company: "GitHub Community",
     description:
-      "Contributed to the development of a SaaS platform from MVP to production. Collaborated with designers to implement pixel-perfect UI components.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS"],
+      "Contributed to various open-source projects by fixing UI bugs, improving documentation, and collaborating with other developers to enhance feature sets.",
+    technologies: ["JavaScript", "Git", "Markdown", "CSS"],
     current: false,
   },
   {
-    period: "2018 — 2019",
-    role: "Freelance Developer",
-    company: "Self-Employed",
+    period: "2020 — 2024",
+    role: "Computer Science Student",
+    company: "Southeast University",
     description:
-      "Delivered custom web solutions for small businesses and startups. Built 15+ websites and applications, handling everything from design to deployment.",
-    technologies: ["JavaScript", "PHP", "WordPress", "MySQL"],
+      "Focused on Data Structures, Algorithms, and Software Engineering principles. Completed several academic projects",
+    technologies: ["Python", "Java", "SQL", "C++"],
     current: false,
   },
 ];
@@ -52,17 +54,17 @@ export const Experience = () => {
             className="text-secondary-foreground text-sm
            font-medium tracking-wider uppercase animate-fade-in"
           >
-            Career Journey
+            Evolution
           </span>
           <h2
             className="text-4xl md:text-5xl font-bold
            mt-4 mb-6 animate-fade-in animation-delay-100
             text-secondary-foreground"
           >
-            Experience that{" "}
+            My technical{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              speaks volumes.
+              journey.
             </span>
           </h2>
 
@@ -70,14 +72,14 @@ export const Experience = () => {
             className="text-muted-foreground
            animate-fade-in animation-delay-200"
           >
-            A timeline of my professional growth, from curious beginner to
-            senior engineer leading teams and building products at scale.
+            A timeline of my growth as a developer—from writing my first line of code 
+            to building full-scale applications and contributing to the community.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="relative">
-          <div className="timeline-glow absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 shadow-[0_0_25px_rgba(32,178,166,0.8)]" />
+          <div className="timeline-glow absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-primary/70 via-primary/30 to-transparent md:-translate-x-1/2 shadow-[0_0_25px_rgba(32,178,166,0.8)]" />
 
           {/* Experience Items */}
           <div className="space-y-12">

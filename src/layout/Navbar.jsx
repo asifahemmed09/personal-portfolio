@@ -1,12 +1,12 @@
-import { Button } from "@/components/Button";
-import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Button } from '@/components/Button';
+import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#testimonials', label: 'Testimonials' },
 ];
 
 export const Navbar = () => {
@@ -18,15 +18,15 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
-        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
+        isScrolled ? 'glass-strong py-3' : 'bg-transparent py-5'
       }  z-50`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
@@ -34,7 +34,7 @@ export const Navbar = () => {
           href="#"
           className="text-xl font-bold tracking-tight hover:text-primary"
         >
-          PM<span className="text-primary">.</span>
+          AA<span className="text-primary">.</span>
         </a>
 
         {/* Desktop Nav */}
@@ -54,7 +54,9 @@ export const Navbar = () => {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
+          <Button size="sm">
+            <a href="#contact">Contact Me</a>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -80,9 +82,8 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-
             <Button onClick={() => setIsMobileMenuOpen(false)}>
-              Contact Me
+              <a href="#contact">Contact Me</a>
             </Button>
           </div>
         </div>

@@ -14,19 +14,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "pedro@example.com",
-    href: "mailto:pedro@example.com",
+    value: "asifahemmed.dev@gmail.com",
+    href: "mailto:asifahemmed.dev@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "+8801892238010",
+    href: "tel:+8801892238010",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Bogura, Bangladesh",
     href: "#",
   },
 ];
@@ -63,8 +63,8 @@ export const Contact = () => {
         serviceId,
         templateId,
         {
-          name: formData.name,
-          email: formData.email,
+          from_name: formData.name,
+          from_email: formData.email,
           message: formData.message,
         },
         publicKey
@@ -76,11 +76,11 @@ export const Contact = () => {
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
-      console.error("EmailJS error:", error);
+      console.error("EmailJS error:", err);
       setSubmitStatus({
         type: "error",
         message:
-          error.text || "Failed to send message. Please try again later.",
+          err.text || "Failed to send message. Please try again later.",
       });
     } finally {
       setIsLoading(false);
@@ -198,9 +198,9 @@ export const Contact = () => {
                      }`}
                 >
                   {submitStatus.type === "success" ? (
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 shrink-0" />
                   ) : (
-                    <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                    <AlertCircle className="w-5 h-5 shrink-0" />
                   )}
                   <p className="text-sm">{submitStatus.message}</p>
                 </div>
