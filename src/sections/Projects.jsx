@@ -1,5 +1,6 @@
 import { ArrowUpRight, Github } from 'lucide-react';
 import { AnimatedBorderButton } from '@/components/AnimatedBorderButton';
+
 const projects = [
   {
     title: 'Full-Stack E-Commerce Platform',
@@ -51,9 +52,10 @@ const projects = [
 export const Projects = () => {
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
-      {/* Bg glows */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+      {/* Background glows */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" aria-hidden="true" />
+      
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
@@ -76,7 +78,7 @@ export const Projects = () => {
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, idx) => (
-            <div
+            <article
               key={idx}
               className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
@@ -85,24 +87,32 @@ export const Projects = () => {
               <div className="relative overflow-hidden aspect-video">
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`Screenshot of ${project.title}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div
                   className="absolute inset-0 
                 bg-linear-to-t from-card via-card/50
                  to-transparent opacity-60"
+                  aria-hidden="true"
                 />
                 {/* Overlay Links */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a target="_blank"
+                  <a
                     href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${project.title} live demo`}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
-                  <a target="_blank"
+                  <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${project.title} source code on GitHub`}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <Github className="w-5 h-5" />
@@ -116,8 +126,11 @@ export const Projects = () => {
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <a target="_blank"
+                  <a
                     href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${project.title}`}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <ArrowUpRight className="w-5 h-5" />
@@ -137,13 +150,18 @@ export const Projects = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
-          <a target="_blank" href="https://github.com/asifahemmed09" className="btn btn-primary">
+          <a
+            href="https://github.com/asifahemmed09"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View all projects on GitHub"
+          >
             <AnimatedBorderButton>
               View All Projects
               <ArrowUpRight className="w-5 h-5" />

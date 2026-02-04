@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const testimonials = [
   {
+    id: 1,
     quote:
       "Asif is one of the most talented engineers I've worked with. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable.",
     author: "Sarah Chen",
@@ -11,6 +12,7 @@ const testimonials = [
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
   {
+    id: 2,
     quote:
       "Working with Asif was a game-changer for our project. He delivered ahead of schedule with code quality that set a new standard for our team.",
     author: "Michael Rodriguez",
@@ -19,6 +21,7 @@ const testimonials = [
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
   },
   {
+    id: 3,
     quote:
       "Asif's expertise in React and TypeScript helped us rebuild our entire frontend in record time. His architectural decisions continue to pay dividends.",
     author: "Emily Watson",
@@ -27,6 +30,7 @@ const testimonials = [
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
   },
   {
+    id: 4,
     quote:
       "Not only is Asif technically brilliant, but he's also a fantastic communicator and team player. He elevated everyone around him.",
     author: "David Kim",
@@ -48,22 +52,18 @@ export const Testimonials = () => {
       (prev) => (prev - 1 + testimonials.length) % testimonials.length
     );
   };
+
   return (
     <section id="testimonials" className="py-32 relative overflow-hidden">
       <div
         className="absolute top-1/2 left-1/2
        w-[800px] h-[800px] bg-primary/5
         rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+        aria-hidden="true"
       />
-      <div
-        className="container mx-auto 
-      px-6 relative z-10"
-      >
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div
-          className="text-center max-w-3xl 
-        mx-auto mb-16"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span
             className="text-secondary-foreground 
           text-sm font-medium tracking-wider 
@@ -77,10 +77,7 @@ export const Testimonials = () => {
           animation-delay-100 text-secondary-foreground"
           >
             Kind words from{" "}
-            <span
-              className="font-serif italic 
-            font-normal text-white"
-            >
+            <span className="font-serif italic font-normal text-white">
               amazing people.
             </span>
           </h2>
@@ -102,8 +99,9 @@ export const Testimonials = () => {
               <div className="flex items-center gap-4">
                 <img
                   src={testimonials[activeIdx].avatar}
-                  alt={testimonials[activeIdx].author}
+                  alt={`${testimonials[activeIdx].author} profile picture`}
                   className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
+                  loading="lazy"
                 />
                 <div>
                   <div className="font-semibold">
@@ -116,19 +114,24 @@ export const Testimonials = () => {
               </div>
             </div>
 
-            {/* Testimonials Navigation */}
+            {/* Navigation */}
             <div className="flex items-center justify-center gap-4 mt-8">
               <button
-                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
                 onClick={previous}
+                aria-label="Previous testimonial"
+                className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >
-                <ChevronLeft />
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
-              <div className="flex gap-2">
-                {testimonials.map((_, idx) => (
+              <div className="flex gap-2" role="tablist" aria-label="Testimonials">
+                {testimonials.map((testimonial, idx) => (
                   <button
+                    key={testimonial.id}
                     onClick={() => setActiveIdx(idx)}
+                    role="tab"
+                    aria-selected={idx === activeIdx}
+                    aria-label={`View testimonial from ${testimonial.author}`}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       idx === activeIdx
                         ? "w-8 bg-primary"
@@ -140,9 +143,10 @@ export const Testimonials = () => {
 
               <button
                 onClick={next}
+                aria-label="Next testimonial"
                 className="p-3 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >
-                <ChevronRight />
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           </div>

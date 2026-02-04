@@ -4,7 +4,6 @@ import {
   ChevronDown,
   Github,
   Linkedin,
-  Twitter,
   Download,
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
@@ -31,23 +30,46 @@ const skills = [
   "GitHub Actions",
 ];
 
+const socialLinks = [
+  { 
+    icon: Github, 
+    href: "https://github.com/asifahemmed09",
+    label: "GitHub"
+  },
+  { 
+    icon: Linkedin, 
+    href: "https://www.linkedin.com/in/asif-ahemmed-2a8760393/",
+    label: "LinkedIn"
+  },
+];
+
 export const Hero = () => {
+  const handleDownloadCV = () => {
+    // TODO: Implement actual CV download
+    // const link = document.createElement('a');
+    // link.href = '/path-to-your-cv.pdf';
+    // link.download = 'Asif-Ahemmed-CV.pdf';
+    // link.click();
+    console.log('Download CV clicked - Implementation pending');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg */}
+      {/* Background */}
       <div className="absolute inset-0">
         <img
           src="/hero-bg.jpg"
-          alt="Hero image"
+          alt="Abstract technology background"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background" />
       </div>
 
-      {/* Green Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Dots */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         {[...Array(30)].map((_, i) => (
           <div
+            key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
               backgroundColor: "#20B2A6",
@@ -94,10 +116,12 @@ export const Hero = () => {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg">
-                <a href="#contact">Contact Me</a> <ArrowRight className="w-5 h-5" />
+              <Button size="lg" asChild>
+                <a href="#contact">
+                  Contact Me <ArrowRight className="w-5 h-5" />
+                </a>
               </Button>
-              <AnimatedBorderButton>
+              <AnimatedBorderButton onClick={handleDownloadCV}>
                 <Download className="w-5 h-5" />
                 Download CV
               </AnimatedBorderButton>
@@ -105,24 +129,24 @@ export const Hero = () => {
 
             {/* Social Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
-              {[
-                { icon: Github, href: "https://github.com/asifahemmed09" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/asif-ahemmed-2a8760393/" },
-              ].map((social, idx) => (
+              <span className="text-sm text-muted-foreground">Follow me:</span>
+              {socialLinks.map((social) => (
                 <a
-                  key={idx}
+                  key={social.label}
                   href={social.href}
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
                 >
-                  {<social.icon className="w-5 h-5" />}
+                  <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </div>
+
           {/* Right Column - Profile Image */}
-          <div className="relatice animate-fade-in animation-delay-300">
+          <div className="relative animate-fade-in animation-delay-300">
             {/* Profile Image */}
             <div className="relative max-w-md mx-auto">
               <div
@@ -130,23 +154,26 @@ export const Hero = () => {
               rounded-3xl bg-linear-to-br 
               from-primary/30 via-transparent 
               to-primary/10 blur-2xl animate-pulse"
+                aria-hidden="true"
               />
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
                   src="/profile-photo.png"
-                  alt="Asif Ahemmed"
+                  alt="Asif Ahemmed - Software Engineer"
                   className="w-full aspect-4/5 object-cover rounded-2xl"
+                  loading="eager"
                 />
 
                 {/* Floating Badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                     <span className="text-sm font-medium">
                       Available for work
                     </span>
                   </div>
                 </div>
+
                 {/* Stats Badge */}
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
                   <div className="text-2xl font-bold text-primary">3+</div>
@@ -159,7 +186,7 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* Skills Section */}
+        {/* Skills Marquee */}
         <div className="mt-20 animate-fade-in animation-delay-600">
           <p className="text-sm text-muted-foreground mb-6 text-center">
             Technologies I work with
@@ -167,13 +194,15 @@ export const Hero = () => {
           <div className="relative overflow-hidden">
             <div
               className="absolute left-0 top-0 bottom-0 w-32
-             bg-linear-to-r from-background to-transparent z-10"
+             bg-linear-to-r from-background to-transparent z-10 pointer-events-none"
+              aria-hidden="true"
             />
             <div
               className="absolute right-0 top-0 bottom-0 w-32
-             bg-linear-to-l from-background to-transparent z-10"
+             bg-linear-to-l from-background to-transparent z-10 pointer-events-none"
+              aria-hidden="true"
             />
-            <div className="flex animate-marquee">
+            <div className="flex animate-marquee" aria-label="Technologies">
               {[...skills, ...skills].map((skill, idx) => (
                 <div key={idx} className="shrink-0 px-8 py-4">
                   <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
@@ -186,6 +215,7 @@ export const Hero = () => {
         </div>
       </div>
 
+      {/* Scroll Indicator */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 
       animate-fade-in animation-delay-800"
@@ -193,6 +223,7 @@ export const Hero = () => {
         <a
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+          aria-label="Scroll to About section"
         >
           <span className="text-xs uppercase tracking-wider">Scroll</span>
           <ChevronDown className="w-6 h-6 animate-bounce" />
