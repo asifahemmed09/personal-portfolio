@@ -45,12 +45,10 @@ const socialLinks = [
 
 export const Hero = () => {
   const handleDownloadCV = () => {
-    // TODO: Implement actual CV download
-    // const link = document.createElement('a');
-    // link.href = '/path-to-your-cv.pdf';
-    // link.download = 'Asif-Ahemmed-CV.pdf';
-    // link.click();
-    console.log('Download CV clicked - Implementation pending');
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'resume.pdf';
+    link.click();
   };
 
   return (
